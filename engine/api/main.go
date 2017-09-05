@@ -24,6 +24,7 @@ import (
 	"github.com/ovh/cds/engine/api/hatchery"
 	"github.com/ovh/cds/engine/api/hook"
 	"github.com/ovh/cds/engine/api/mail"
+	"github.com/ovh/cds/engine/api/metrics"
 	"github.com/ovh/cds/engine/api/notification"
 	"github.com/ovh/cds/engine/api/objectstore"
 	"github.com/ovh/cds/engine/api/pipeline"
@@ -246,6 +247,7 @@ var mainCmd = &cobra.Command{
 		go pipeline.AWOLPipelineKiller(ctx, database.GetDBMap)
 		go hatchery.Heartbeat(ctx, database.GetDBMap)
 		go auditCleanerRoutine(ctx, database.GetDBMap)
+		go metrics.Initialize(ctx, database.GetDBMap)
 
 		go repositoriesmanager.ReceiveEvents(ctx, database.GetDBMap)
 

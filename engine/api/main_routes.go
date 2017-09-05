@@ -58,6 +58,7 @@ func (router *Router) init() {
 	router.Handle("/mon/building/{hash}", GET(getPipelineBuildingCommit))
 	router.Handle("/mon/warning", GET(getUserWarnings))
 	router.Handle("/mon/lastupdates", GET(getUserLastUpdates))
+	router.Handle("/mon/metrics", GET(getMetrics, Auth(false)))
 
 	// Project
 	router.Handle("/project", GET(getProjectsHandler), POST(addProjectHandler))
