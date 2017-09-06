@@ -247,7 +247,7 @@ var mainCmd = &cobra.Command{
 		go pipeline.AWOLPipelineKiller(ctx, database.GetDBMap)
 		go hatchery.Heartbeat(ctx, database.GetDBMap)
 		go auditCleanerRoutine(ctx, database.GetDBMap)
-		go metrics.Initialize(ctx, database.GetDBMap)
+		go metrics.Initialize(ctx, database.GetDBMap, "TODOinstanceInConfiguration")
 
 		go repositoriesmanager.ReceiveEvents(ctx, database.GetDBMap)
 
